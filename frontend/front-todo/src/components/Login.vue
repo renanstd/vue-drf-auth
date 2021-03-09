@@ -48,6 +48,7 @@
 
 <script>
 import axios from 'axios';
+import router from '../router'
 export default {
   data() {
     return {
@@ -68,6 +69,7 @@ export default {
       axios.post(path, payload)
       .then((response) => {
         console.log(response);
+        router.push('/');
       })
       .catch((error) => {
         console.log(error);
