@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Login from '../components/Login.vue';
-import App from '../App.vue';
+import Todos from '../components/Todos.vue';
 
 
 Vue.use(VueRouter);
@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: App,
+    component: Todos,
   },
   {
     path: '/login',
