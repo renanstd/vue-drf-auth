@@ -11,6 +11,9 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Todos,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/login',
@@ -24,5 +27,18 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const auth = Vue.$cookies.get("auth")
+    if (auth == null || !auth.is_auth) {
+      next({ name: 'Login' })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
 
 export default router;

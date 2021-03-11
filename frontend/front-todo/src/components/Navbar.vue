@@ -1,30 +1,41 @@
 <template>
-    <b-navbar
-        variant="success"
-        type="light"
-        sticky="true"
-    >
+  <b-navbar variant="info">
+    <b-container fluid>
+      <b-col>
         <b-navbar-brand href="#">
-            <b>Lista de tarefas</b>
+          <b>Lista de tarefas</b>
         </b-navbar-brand>
-        <b-navbar-nav class="ml-auto">
-            <b-nav-text class="ml-auto">
-                Usuário logado: {{ user }}
-            </b-nav-text>
-            <b-button pill v-if="user"
-                variant="primary"
-                type="submit"
-            >Logout</b-button>
-            <b-button pill v-else
-                variant="primary"
-                type="submit"
-            >Login</b-button>
-        </b-navbar-nav>
-    </b-navbar>
+      </b-col>
+      <b-col>
+        <b-row align-h="center">
+          <span>Bem vindo, {{ username }}</span>
+        </b-row>
+      </b-col>
+      <b-col>
+        <b-button v-on:click="logout" size="sm" class="float-right"> Logout </b-button>
+      </b-col>
+    </b-container>
+  </b-navbar>
 </template>
 
 <script>
+
+import route from '../router'
+
 export default {
-    props: ['user'],
+  mounted() {
+    this.username = this.$cookies.get("auth").username
+  },
+  data() {
+    return {
+      username: null
+    }
+  },
+  methods: {
+    logout() {
+      this.$cookies.remove("auth")
+      route.push('/login')
+    }
+  }
 }
 </script>

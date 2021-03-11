@@ -3,8 +3,8 @@
     <b-row>
       <h1>Login</h1>
     </b-row>
-    <b-form @submit="onSubmit">
 
+    <b-form @submit="onSubmit">
       <b-row>
         <b-form-group
           id="input-group-user"
@@ -39,40 +39,54 @@
 
       <br>
 
-      <b-row>
+      <b-row align-h="end">
         <b-button type="submit" variant="primary">Login</b-button>
       </b-row>
+
     </b-form>
   </b-container>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 import router from '../router'
+
 export default {
   data() {
     return {
       loginForm: {
         user: '',
         password: ''
+      },
+      todos: {
+        name: null,
+        content: null,
+        date: null,
+        done: null,
       }
     }
   },
   methods: {
     onSubmit(event) {
-      event.preventDefault();
+      event.preventDefault()
       const payload = {
         username: this.loginForm.user,
         password: this.loginForm.password,
       }
-      const path = "http://localhost:8000/api/token/";
+      const path = "http://localhost:8000/api/token/"
       axios.post(path, payload)
       .then((response) => {
-        console.log(response);
-        router.push('/');
+        const data = response.data
+        const to_store = {
+          username: payload.username,
+          jwt: data,
+          is_auth: true,
+        }
+        this.$cookies.set("auth", to_store, 0)
+        router.push('/')
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error)
       })
     }
   }
