@@ -1,10 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from core.urls import router
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from core.api.viewsets import CustomTokenOptainPairViewSet
+from rest_framework_simplejwt.views import TokenRefreshView
 
 
 urlpatterns = [
@@ -12,7 +10,7 @@ urlpatterns = [
     path("api/", include(router.urls)),
     path(
         'api/token/',
-        TokenObtainPairView.as_view(),
+        CustomTokenOptainPairViewSet.as_view(),
         name='token_obtain_pair'
     ),
     path(

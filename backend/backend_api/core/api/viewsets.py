@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from rest_framework import permissions
+from rest_framework_simplejwt.views import TokenObtainPairView
 from core import models
 from core.api import serializers
 
@@ -18,3 +19,7 @@ class TodoViewSet(viewsets.ModelViewSet):
         """
         user = self.request.user
         return models.Todo.objects.filter(user=user)
+
+
+class CustomTokenOptainPairViewSet(TokenObtainPairView):
+    serializer_class = serializers.CustomTokenOptainPairSerializer
