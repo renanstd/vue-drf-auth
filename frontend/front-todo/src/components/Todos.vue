@@ -1,18 +1,19 @@
 <template>
-    <navbar user="teste"></navbar>
+  <navbar></navbar>
 </template>
 
 <script>
-import Navbar from './Navbar'
+
+import Navbar from "./Navbar"
+import api from "./api"
 
 export default {
-    data() {
-        return {
-            user: 'renan'
-        }
-    },
-    components: {
-        navbar: Navbar
-    }
+  mounted() {
+    api.getTodos()
+  },
+  components: {
+    navbar: Navbar,
+  },
 }
+
 </script>
