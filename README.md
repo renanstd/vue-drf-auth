@@ -14,7 +14,7 @@ Apenas um minúsculo estudo sobre autenticação via token JWT usando um backend
 
 ### Backend
 
-[Poetry](https://python-poetry.org/) reqired.
+Requer [Poetry](https://python-poetry.org/)
 
 ```sh
 cd backend/backend_api
