@@ -8,7 +8,7 @@
 
 ## Descrição
 
-Apenas um minúsculo estudo sobre autenticação via token JWT usando um backend Django + DjangoREST e um frontend VUE.
+Apenas um minúsculo estudo sobre autenticação via token JWT usando um backend Django e um frontend VUE.
 
 ## Subindo os serviços
 
