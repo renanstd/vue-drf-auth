@@ -1,1 +1,3 @@
 # vue-drf-auth
+
+[![Insomnia](https://img.shields.io/badge/Insomnia-black?style=flat&logo=insomnia&logoColor=5849BE)](https://insomnia.rest/)
